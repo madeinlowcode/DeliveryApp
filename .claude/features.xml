@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features project="PedeAI" total="3" completed="0">
+
+  <!--
+    PedeAI - Sistema SaaS Multi-Tenant para Delivery
+    Gerado por: sprint-context-generator skill
+    Atualizado por: software-engineer skill (analise de qualidade)
+    Data: 2026-02-05
+
+    Ordem de Desenvolvimento (Backend-first):
+    1. FEAT-002: Painel do Estabelecimento (90 tasks) - +22 tasks de seguranca, auditoria e error handling
+    2. FEAT-003: Agente IA (70 tasks) - +18 tasks de seguranca, mocks e observabilidade
+    3. FEAT-001: Chat do Cliente (70 tasks) - +22 tasks de acessibilidade, error handling, loading, performance e seguranca
+
+    Total: 230 tasks
+  -->
+
+  <category name="Backend">
+    <feature id="FEAT-002" status="pending" priority="high">
+      <description>Painel do Estabelecimento com Kanban de pedidos e CRUD do cardapio</description>
+      <steps>
+        <step>Setup inicial com Supabase client e tipos TypeScript gerados</step>
+        <step>Tabelas do cardapio (categories, products, variations, addons) com RLS</step>
+        <step>Tabelas de pedidos (orders, order_items) com status enum e RLS</step>
+        <step>Tabelas de configuracao (tenants, business_hours, payment_methods)</step>
+        <step>Tabela de auditoria (audit_logs) com triggers</step>
+        <step>Layout autenticado com sidebar e protecao de rotas</step>
+        <step>Kanban de pedidos com drag-and-drop e realtime</step>
+        <step>CRUD completo de categorias com reordenacao</step>
+        <step>CRUD completo de produtos com variacoes e adicionais</step>
+        <step>Tela de configuracoes (horarios, pagamentos, dados do tenant)</step>
+        <step>Rate limiting e sanitizacao de inputs em todas as APIs</step>
+        <step>Optimistic locking para evitar conflitos de edicao</step>
+        <step>Log de auditoria para todas as operacoes</step>
+        <step>Error handling padronizado com mensagens amigaveis</step>
+      </steps>
+      <notes>Tasks: 90 | Docs: docs/context-log-running/painel-do-estabelecimento/ | Complexity: Media-Alta | Priority: 1 de 3</notes>
+    </feature>
+  </category>
+
+  <category name="AI">
+    <feature id="FEAT-003" status="pending" priority="high">
+      <description>Agente IA com tools para atendimento automatizado de pedidos via chat</description>
+      <steps>
+        <step>Tool getCategories retorna categorias ativas do cardapio</step>
+        <step>Tool getProducts retorna produtos com variacoes e adicionais</step>
+        <step>Tool addToCart adiciona item ao carrinho com validacao completa</step>
+        <step>Tool removeFromCart remove item e recalcula totais</step>
+        <step>Tool getCart retorna resumo completo do carrinho</step>
+        <step>Tool checkout cria pedido com revalidacao de precos</step>
+        <step>Tool checkBusinessHours valida horario de funcionamento</step>
+        <step>Tool getOrderStatus consulta status de pedido existente</step>
+        <step>System prompt dinamico baseado nas configuracoes do tenant</step>
+        <step>Streaming funcionando para resposta progressiva</step>
+        <step>Rate limiting e validacao de seguranca implementados</step>
+        <step>Error handling gracioso com mensagens amigaveis</step>
+        <step>Logger estruturado e observabilidade</step>
+        <step>Testes unitarios com >80% cobertura</step>
+      </steps>
+      <notes>Tasks: 70 | Docs: docs/context-log-running/agente-ia/ | Complexity: Media-Alta | Priority: 2 de 3 | Depends: FEAT-002</notes>
+    </feature>
+  </category>
+
+  <category name="Frontend">
+    <feature id="FEAT-001" status="pending" priority="high">
+      <description>Chat do Cliente com interface visual interativa usando Assistant UI</description>
+      <steps>
+        <step>Layout responsivo com sidebar e area de chat usando Assistant UI</step>
+        <step>Mensagens do usuario e assistente renderizadas corretamente</step>
+        <step>CategoryCards renderiza grid de categorias clicaveis</step>
+        <step>ProductCards renderiza produtos com imagem, preco e botao adicionar</step>
+        <step>ProductDetailModal permite selecao de variacoes e adicionais</step>
+        <step>CartSummary exibe itens do carrinho com totais</step>
+        <step>CheckoutForm coleta endereco e forma de pagamento</step>
+        <step>OrderConfirmation exibe numero do pedido criado</step>
+        <step>Sidebar exibe historico de pedidos com botao pedir novamente</step>
+        <step>Interface responsiva funcionando em mobile e desktop</step>
+        <step>Acessibilidade: ARIA labels, keyboard navigation, focus trap</step>
+        <step>Error handling: Error Boundary, API handler, offline detection</step>
+        <step>Loading states: skeletons e typing indicator</step>
+        <step>Performance: lazy loading, memoizacao de mensagens</step>
+        <step>Seguranca: input sanitization, session timeout, rate limit handling</step>
+        <step>Testes E2E e testes de acessibilidade</step>
+      </steps>
+      <notes>Tasks: 70 | Docs: docs/context-log-running/chat-do-cliente/ | Complexity: Media-Alta | Priority: 3 de 3 | Depends: FEAT-003</notes>
+    </feature>
+  </category>
+
+</features>

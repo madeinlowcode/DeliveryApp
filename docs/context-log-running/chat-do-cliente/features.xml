@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features project="PedeAI" total="3" completed="0">
+
+  <!--
+    FEAT-001: Chat do Cliente
+    Atualizado por: software-engineer skill (analise de qualidade)
+    Data: 2026-02-05
+
+    Melhorias adicionadas:
+    - Acessibilidade (ARIA, keyboard navigation, focus trap)
+    - Error Handling (Error Boundary, API error handler, offline detection)
+    - Loading States (Skeletons, typing indicator)
+    - Performance (lazy loading, memoization)
+    - Seguranca (input sanitization, session timeout, rate limit handling)
+  -->
+
+  <category name="Frontend">
+    <feature id="FEAT-001" status="pending" priority="high">
+      <description>Chat do Cliente com interface visual interativa usando Assistant UI</description>
+      <steps>
+        <!-- Layout e Estrutura -->
+        <step>Layout responsivo com sidebar e area de chat usando Assistant UI</step>
+        <step>Mensagens do usuario e assistente renderizadas corretamente</step>
+
+        <!-- Tool UI - Cardapio -->
+        <step>CategoryCards renderiza grid de categorias clicaveis</step>
+        <step>ProductCards renderiza produtos com imagem, preco e botao adicionar</step>
+        <step>ProductDetailModal permite selecao de variacoes e adicionais</step>
+
+        <!-- Tool UI - Carrinho e Checkout -->
+        <step>CartSummary exibe itens do carrinho com totais</step>
+        <step>CheckoutForm coleta endereco e forma de pagamento</step>
+        <step>OrderConfirmation exibe numero do pedido criado</step>
+
+        <!-- Sidebar e Historico -->
+        <step>Sidebar exibe historico de pedidos com botao pedir novamente</step>
+
+        <!-- Responsividade -->
+        <step>Interface responsiva funcionando em mobile e desktop</step>
+
+        <!-- Acessibilidade -->
+        <step>Aria-labels em todos elementos interativos (botoes, cards, inputs)</step>
+        <step>Navegacao por teclado funcional em CategoryCards e ProductCards</step>
+        <step>Focus trap implementado em ProductDetailModal</step>
+        <step>Skip to content link no inicio da pagina</step>
+
+        <!-- Error Handling -->
+        <step>Error Boundary para captura de erros de renderizacao</step>
+        <step>API error handler com mensagens amigaveis e toast</step>
+        <step>Offline Banner exibido quando usuario perde conexao</step>
+
+        <!-- Loading States -->
+        <step>Skeleton loading para CategoryCards e ProductCards</step>
+        <step>Typing indicator enquanto IA processa resposta</step>
+
+        <!-- Performance -->
+        <step>Image lazy loading com fallback para imagens que falham</step>
+        <step>Memoizacao de mensagens para evitar re-renders</step>
+
+        <!-- Seguranca -->
+        <step>Input sanitization antes de enviar mensagens</step>
+        <step>Session timeout handling com warning antes de expirar</step>
+        <step>Rate limit handling para respostas 429</step>
+
+        <!-- Testes -->
+        <step>Testes E2E cobrindo fluxo completo de pedido</step>
+        <step>Testes de acessibilidade com screen reader</step>
+      </steps>
+      <notes>Tasks: 70 | Docs: docs/context-log-running/chat-do-cliente/ | Complexity: Media-Alta | Priority: 3 de 3 | Depends: FEAT-003</notes>
+    </feature>
+  </category>
+
+</features>

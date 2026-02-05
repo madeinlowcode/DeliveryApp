@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features project="PedeAI" total="3" completed="0">
+
+  <category name="AI">
+    <feature id="FEAT-003" status="pending" priority="high">
+      <description>Agente IA com tools para atendimento automatizado de pedidos via chat</description>
+      <steps>
+        <!-- Tools do Cardapio -->
+        <step>Tool getCategories retorna categorias ativas do cardapio</step>
+        <step>Tool getProducts retorna produtos com variacoes e adicionais</step>
+        <step>Tool checkBusinessHours valida horario de funcionamento</step>
+        <step>Tool getOrderStatus consulta status de pedido existente</step>
+
+        <!-- Tools do Carrinho -->
+        <step>Tool addToCart adiciona item ao carrinho com validacao completa</step>
+        <step>Tool removeFromCart remove item e recalcula totais</step>
+        <step>Tool getCart retorna resumo completo do carrinho</step>
+        <step>Tool checkout cria pedido com revalidacao de precos</step>
+
+        <!-- Core -->
+        <step>System prompt dinamico baseado nas configuracoes do tenant</step>
+        <step>Streaming funcionando para resposta progressiva</step>
+
+        <!-- Seguranca -->
+        <step>Rate limiting implementado (30 req/min por IP)</step>
+        <step>Validacao de sessionId como UUID v4</step>
+        <step>Sanitizacao de inputs contra XSS/injection</step>
+        <step>Timeout de 30s para chamadas ao LLM</step>
+
+        <!-- Error Handling -->
+        <step>Tratamento gracioso de erros com mensagens amigaveis</step>
+        <step>Validacao de precos no checkout (prevenir manipulacao)</step>
+
+        <!-- Observabilidade -->
+        <step>Logger estruturado com correlation ID</step>
+        <step>Health check endpoint funcionando</step>
+
+        <!-- Testes -->
+        <step>Testes unitarios com >80% cobertura</step>
+        <step>Mocks configurados para testes sem API real</step>
+      </steps>
+      <notes>Tasks: 70 | Docs: docs/context-log-running/agente-ia/ | Complexity: Media-Alta | Priority: 2 de 3 | Depends: FEAT-002</notes>
+    </feature>
+  </category>
+
+</features>

@@ -1,0 +1,38 @@
+{
+  "mcpServers": {
+    "supabase": {
+      "type": "http",
+      "url": "https://mcp.supabase.com/mcp?project_ref=gftdpamueaidhseivlnp",
+      "headers": {
+        "Authorization": "Bearer sbp_41921c78253e6f7413fedef48525a9e1396fa2ee"
+      }
+    },
+    "chrome-devtools": {
+      "command": "npx",
+      "args": ["-y", "chrome-devtools-mcp@latest"]
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"]
+    },
+    "context7": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp",
+        "--api-key",
+        "ctx7sk-a13c8ddf-dac5-4c5a-9d21-b010f18905a0"
+      ]
+    },
+    "serena": {
+      "command": "C:\\Users\\Script7\\.local\\bin\\uvx.exe",
+      "args": [
+        "--from",
+        "git+https://github.com/oraios/serena",
+        "serena-mcp-server",
+        "--context",
+        "ide-assistant"
+      ]
+    }
+  }
+}

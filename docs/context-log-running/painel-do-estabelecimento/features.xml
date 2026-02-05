@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features project="PedeAI" total="3" completed="0">
+
+  <category name="Dashboard">
+    <feature id="FEAT-002" status="pending" priority="high">
+      <description>Painel do Estabelecimento com Kanban de pedidos, CRUD de cardapio e configuracoes</description>
+      <steps>
+        <!-- Autenticacao -->
+        <step>Login/logout funcionando com Supabase Auth</step>
+        <step>Sessao com timeout de 24h e refresh automatico</step>
+
+        <!-- Kanban -->
+        <step>Kanban com 5 colunas e drag-and-drop para pedidos</step>
+        <step>Validacao de transicoes de status permitidas</step>
+        <step>Optimistic update com rollback em caso de erro</step>
+        <step>Realtime: novos pedidos aparecem automaticamente com alerta</step>
+
+        <!-- CRUD Cardapio -->
+        <step>CRUD completo de categorias com imagem e ordenacao</step>
+        <step>CRUD completo de produtos com variacoes e adicionais</step>
+        <step>Upload de imagens com compressao para Supabase Storage</step>
+        <step>Optimistic locking para evitar conflitos de edicao</step>
+
+        <!-- Configuracoes -->
+        <step>Configuracoes: dados gerais, horarios, formas de pagamento</step>
+        <step>Visualizador de historico de auditoria</step>
+
+        <!-- Seguranca -->
+        <step>Rate limiting em todas as API routes (60 req/min)</step>
+        <step>Sanitizacao de inputs contra XSS em todos os formularios</step>
+        <step>Validacao server-side com Zod em todas as APIs</step>
+        <step>Headers de seguranca configurados (CSP, X-Frame-Options)</step>
+
+        <!-- Auditoria -->
+        <step>Log de auditoria para todas as operacoes de CRUD</step>
+        <step>Registro de usuario, acao, timestamp e alteracoes</step>
+
+        <!-- Error Handling -->
+        <step>Error boundary para captura de erros de renderizacao</step>
+        <step>Tratamento padronizado de erros de API com toast</step>
+        <step>Indicador de conexao offline</step>
+
+        <!-- Performance -->
+        <step>Cache de dados com SWR/React Query</step>
+        <step>Skeleton loading em todas as listagens</step>
+
+        <!-- Testes -->
+        <step>Cobertura de testes unitarios maior que 80 porcento</step>
+        <step>Testes E2E passando para fluxos criticos</step>
+      </steps>
+      <notes>Tasks: 90 | Docs: docs/context-log-running/painel-do-estabelecimento/ | Complexity: Media-Alta | Priority: 1 de 3</notes>
+    </feature>
+  </category>
+
+</features>
