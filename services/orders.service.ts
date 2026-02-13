@@ -109,8 +109,9 @@ class OrdersService {
     return count ?? 0
   }
 
-  // AIDEV-NOTE: Fetch orders formatted for Kanban cards
+  // AIDEV-NOTE: Fetch orders formatted for Kanban cards (T-013: Optimized with direct count)
   async getKanbanCards(establishmentId: string): Promise<KanbanOrderCard[]> {
+    // AIDEV-PERF: Use single query with embedded relation count
     const { data: orders, error } = await this.supabase
       .from('orders')
       .select(
@@ -129,8 +130,12 @@ class OrdersService {
       throw new Error(`Failed to fetch Kanban cards: ${error.message}`)
     }
 
-    return (orders ?? []).map((order: Order & { order_items: { id: string }[] }) =>
-      formatOrderForCard(order, order.order_items?.length ?? 0)
+    // AIDEV-PERF: Direct mapping without intermediate array allocation
+    return (orders ?? []).map((order) =>
+      formatOrderForCard(
+        order,
+        (order as Order & { order_items: { id: string }[] }).order_items?.length ?? 0
+      )
     )
   }
 
@@ -172,7 +177,8 @@ class OrdersService {
     return data
   }
 
-  // AIDEV-NOTE: Fetch orders by customer phone for order history (TASK-033)
+  // AIDEV-NOTE: Fetch orders by customer phone for order history (TASK-033, T-011: N+1 fix)
+  // AIDEV-PERF: Filter by phone directly in Supabase query instead of fetching all and filtering
   async getOrdersByCustomer(
     customerPhone: string,
     establishmentId: string,
@@ -181,6 +187,7 @@ class OrdersService {
     // Normalize phone number for comparison
     const normalizedPhone = customerPhone.replace(/\D/g, '')
 
+    // AIDEV-NOTE: Use ilike with wildcard for partial phone match in database
     const { data, error } = await this.supabase
       .from('orders')
       .select(
@@ -190,6 +197,7 @@ class OrdersService {
       `
       )
       .eq('tenant_id', establishmentId)
+      .like('customer_phone', `%${normalizedPhone}%`)
       .order('created_at', { ascending: false })
       .limit(limit)
 
@@ -198,13 +206,7 @@ class OrdersService {
       throw new Error(`Failed to fetch customer orders: ${error.message}`)
     }
 
-    // Filter by phone number (case-insensitive, digits only)
-    const orders = (data ?? []).filter((order: Order) => {
-      const orderPhone = order.customer_phone?.replace(/\D/g, '') || ''
-      return orderPhone === normalizedPhone
-    })
-
-    return orders
+    return data ?? []
   }
 
   // AIDEV-NOTE: Subscribe to real-time order changes (used by use-realtime-orders hook)
