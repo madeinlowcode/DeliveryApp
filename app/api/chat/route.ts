@@ -49,7 +49,7 @@ async function getTenantBySlug(slug: string): Promise<Tenant | null> {
     }
 
     // AIDEV-NOTE: Fetch business hours for the tenant
-    const { data: businessHoursData, error: bhError } = await supabase
+    const { data: businessHoursData, error: _bhError } = await supabase
       .from('business_hours')
       .select('*')
       .eq('tenant_id', tenant.id)
@@ -157,10 +157,12 @@ export async function POST(request: Request) {
     const systemPrompt = generateSystemPrompt(tenant)
 
     // AIDEV-NOTE: Create tool execution context
+    // AIDEV-NOTE: T-009 FIX - Include minimumOrder from tenant for checkout validation
     const toolContext: CheckoutContext = {
       tenantId: tenant.id,
       sessionId,
       businessHours: tenant.businessHours,
+      minimumOrder: tenant.minimumOrder,
     }
 
     // AIDEV-NOTE: Create all tools with context injected
