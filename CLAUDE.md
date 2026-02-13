@@ -57,6 +57,19 @@ Components use shadcn/ui conventions:
 
 **These rules from `.claude/rules/rules.md` MUST be followed:**
 
+### MCP Tools
+
+This project uses **Serena MCP** for code operations. Always prefer Serena's symbolic tools over standard file operations:
+
+- Use `mcp__serena__find_symbol` for searching symbols/classes/functions
+- Use `mcp__serena__get_symbols_overview` for file analysis
+- Use `mcp__serena__find_referencing_symbols` for finding code references
+- Use `mcp__serena__search_for_pattern` for pattern searching
+- Use `mcp__serena__list_dir` for directory listing
+- Use `mcp__serena__find_file` for file discovery
+
+Only use standard tools (Read, Edit, Write, Glob, Grep) when Serena tools don't meet the need.
+
 ### Planning Protocol
 
 Before any code modification, present an execution plan with:
